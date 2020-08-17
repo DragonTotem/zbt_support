@@ -3,7 +3,10 @@
     package="com.zbt.sample">
 
     <application
+<<<<<<< HEAD
         android:name=".ZbtApplication"
+=======
+>>>>>>> 17d7786... first commit
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -20,10 +23,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
 
         <activity
             android:name=".java.SecondActivity"
             android:label="@string/app_name" />
+=======
+>>>>>>> 17d7786... first commit
     </application>
 
 </manifest>
