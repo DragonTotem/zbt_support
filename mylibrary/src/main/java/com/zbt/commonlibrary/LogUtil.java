@@ -97,4 +97,5 @@ public class LogUtil {
     public static boolean isIsLogEnable() {
         return isLogEnable;
     }
+
 }

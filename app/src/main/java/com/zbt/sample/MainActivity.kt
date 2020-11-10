@@ -1,18 +1,14 @@
 package com.zbt.sample
 
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
-import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.tabs.TabLayout
-import com.zbt.commonlibrary.PrettyImageView
+import com.zbt.sample.java.SecondActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,6 +32,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initView() {
+        findViewById<View>(R.id.fab).setOnClickListener {
+            startActivity(Intent(this@MainActivity, SecondActivity::class.java))
+        }
+
         val fragment1 = MainFragment()
         val fragment2 = MainFragment()
         val fragments = mutableListOf<MainFragment>()
@@ -57,11 +57,24 @@ class MainActivity : AppCompatActivity() {
             override fun onPageSelected(position: Int) {
                 val fragment = fragments[position]
                 fragment.setPageIndex(position + 1)
+                fragment.test2()
+                fragment.test3()
+                fragment.test4()
             }
 
             override fun onPageScrollStateChanged(state: Int) {
             }
         })
+
+        // 存
+        // 存
+        val editor: SharedPreferences.Editor = getSharedPreferences("data", MODE_PRIVATE).edit()
+        editor.putString("name", "ZhangSan")
+        editor.putInt("age", 12)
+        editor.putBoolean("isMarried", false)
+        editor.commit() // 或editor.apply()
+        editor.apply()
+
     }
 
     fun test7() {
@@ -186,5 +199,9 @@ class MainActivity : AppCompatActivity() {
             .run {
                 Log.w(TAG, "by using list result is $this")
             }
+    }
+
+    fun testForSharedPreferences() {
+        val esp = getSharedPreferences("data", Context.MODE_PRIVATE)
     }
 }
