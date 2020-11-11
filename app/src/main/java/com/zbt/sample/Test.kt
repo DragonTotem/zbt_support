@@ -68,3 +68,7 @@ fun test() {
 fun test2() {
     println("merge")
 }
+
+fun test3() {
+    println("test3")
+}
